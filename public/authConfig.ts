@@ -10,7 +10,7 @@ export const msalConfig: Configuration = {
   auth: {
     clientId: "33a8432f-c61c-4d41-bbd5-fda8cb984bf3",
     authority: "https://MyFNSBDevtest.ciamlogin.com/", // Replace the placeholder with your tenant subdomain
-    redirectUri: "http://localhost:3000/", // You must register this URI on App Registration. Defaults to window.location.href e.g. http://localhost:3000/
+    redirectUri: `${window?.location.protocol}//${window?.location.hostname}:${window?.location.port}`, // You must register this URI on App Registration. Defaults to window.location.href e.g. http://localhost:3000/
     navigateToLoginRequestUrl: true, // If "true", will navigate back to the original request location before processing the auth code response.
   },
   cache: {

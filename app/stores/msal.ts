@@ -65,12 +65,12 @@ export const useMsalStore = defineStore("msal", {
         return this.myMSALObj?.loginPopup(requestOptions).then((result) => {
           this.myMSALObj?.setActiveAccount(result.account);
 
-          let a = account ?? this.getActiveAccount;
+          let a =
+            account ??
+            this.accounts.get(result.account.username) ??
+            newAccount(result.account);
 
-          if (!a) {
-            a = newAccount(result.account);
-            this.accounts.set(a.accountInfo.username, a);
-          }
+          this.accounts.set(a.accountInfo.username, a);
 
           a.token = result as AuthenticationResultTyped;
           a.requiresUserInteraction = false;
