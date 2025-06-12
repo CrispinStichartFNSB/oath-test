@@ -15,7 +15,9 @@ const providerLogos: Record<string, string> = {
 </script>
 
 <template>
-  <div class="w-fit p-4 m-2 bg-amber-300 rounded-2xl shadow drop-shadow-lg">
+  <div
+    class="w-fit p-4 m-2 bg-neutral-40 border-1 border-neutral-300 rounded-2xl shadow-md"
+  >
     <div v-if="account === msalStore.getActiveAccount" class="font-bold">
       Active Account
     </div>
@@ -37,5 +39,6 @@ const providerLogos: Record<string, string> = {
         {{ account.token?.idTokenClaims.given_name }}
       </div>
     </div>
+    <button @click="msalStore.signOut('popup', account)">Logout</button>
   </div>
 </template>

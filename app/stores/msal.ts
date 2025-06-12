@@ -87,6 +87,7 @@ export const useMsalStore = defineStore("msal", {
       }
       const logoutSettings: EndSessionPopupRequest = {
         logoutHint: account?.accountInfo.username,
+        account: account?.accountInfo,
       };
 
       if (interactionType === "popup") {

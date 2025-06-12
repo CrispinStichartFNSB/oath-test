@@ -1,1 +1,209 @@
 @import "tailwindcss";
+
+
+@theme {
+  --font-sans: "Source Sans Pro", ui-sans-serif, system-ui, sans-serif;
+
+  /* These colors come from the FNSB style guide: */
+  /* https://fnsbus.sharepoint.com/SitePages/Color-Palettes--How-To-Use-Color.aspx */
+  /* primary colors */
+  --color-borough-blue: #00205bff;
+  --color-north-star-gold: #ffc72cff;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* secondary colors */
+  --color-ice-fog: #d9d9d6;
+  --color-clear-skies: #b9d9eb;
+  --color-bookerly-blue: #407ec9;
+
+  /* accent colors */
+  --color-float-boat: #9a3324;
+  --color-midnight-sunset: #dc8633;
+  --color-creamers-green: #7a9a01;
+  --color-winter-clouds: #7c6992;
+
+  /* Tints are generated with tints.dev */
+
+  --color-borough-blue-50: #e5eeff;
+  --color-borough-blue-100: #d1e1ff;
+  --color-borough-blue-200: #a3c3ff;
+  --color-borough-blue-300: #75a5ff;
+  --color-borough-blue-400: #4284ff;
+  --color-borough-blue-500: #1467ff;
+  --color-borough-blue-600: #0050e6;
+  --color-borough-blue-700: #0040b8;
+  --color-borough-blue-800: #00308a;
+  --color-borough-blue-900: #00205b; /* pure borough blue*/
+  --color-borough-blue-950: #00102e;
+
+  --color-north-star-gold-50: #fffaeb;
+  --color-north-star-gold-100: #fff4d6;
+  --color-north-star-gold-200: #ffe8a8;
+  --color-north-star-gold-300: #ffdd80;
+  --color-north-star-gold-400: #ffd257;
+  --color-north-star-gold-500: #ffc72c; /* pure north star gold */
+  --color-north-star-gold-600: #f0b000;
+  --color-north-star-gold-700: #b38300;
+  --color-north-star-gold-800: #755600;
+  --color-north-star-gold-900: #3d2d00;
+  --color-north-star-gold-950: #1f1600;
+}
+
+@layer base {
+  /* This keeps the layout from shifting when the content grows enough to
+     * require a scrollbar. */
+  html {
+    scrollbar-gutter: stable;
+    background-color: var(--color-neutral-50);
+  }
+
+  input,
+  select,
+  button,
+  textarea {
+    background-color: white;
+    border: 1px solid var(--color-neutral-200);
+    padding: calc(var(--spacing) * 1);
+    /* This is for checkbox and radio button. By default they hug the top of the
+     * line and it looks bad. */
+    vertical-align: middle;
+  }
+
+  button[disabled],
+  button[disabled]:hover,
+  input[disabled],
+  input[disabled]:hover {
+    color: var(--color-neutral-500);
+  }
+
+  button:hover {
+    color: var(--color-bookerly-blue);
+  }
+
+  button:active {
+    color: var(--color-borough-blue);
+    border-style: inset;
+  }
+
+  textarea {
+    display: block;
+  }
+
+  a,
+  a:visited {
+    color: var(--color-borough-blue-500);
+    text-decoration: underline solid var(--color-borough-blue-600);
+  }
+
+  a:hover {
+    color: var(--color-borough-blue-300);
+  }
+
+  a:active {
+    color: var(--color-borough-blue);
+    text-decoration: none;
+  }
+
+  p {
+    line-height: 1.2rem;
+    max-width: var(--container-4xl);
+  }
+
+  /* This is so there's spacing between multiple paragraphs, but not any spacing above the first
+   * one, which should be handled by the container's padding.*/
+  p:not(:first-of-type) {
+    margin-top: 0.7rem;
+  }
+
+  /* Note that these table styles don't get applied to the search results,
+     * because they're "fake" tables. They're <div>s that use display:table in
+     * order to dynamically switch to something else for smaller screen sizes.
+     * However, for consistency's sake, we probably want to keep the styles in
+     * line with each other. */
+  table {
+    width: 100%;
+    border-spacing: 0;
+    font-size: 1rem;
+  }
+
+  th,
+  td {
+    padding: 0.1rem;
+    /* Adds some space between columns. */
+    padding-left: 0.4rem;
+  }
+
+  /* Removes the unneeded extra padding before the first column. */
+  th:first-of-type,
+  td:first-of-type {
+    padding-left: 0.1rem;
+  }
+
+  th {
+    text-align: start;
+  }
+
+  tr {
+    background-color: var(--color-neutral-50);
+  }
+
+  tr:nth-child(odd) {
+    background-color: white;
+  }
+
+  hr {
+    margin-right: auto;
+    margin-left: auto;
+    margin-block: calc(var(--spacing) * 2) /* 0.5rem = 8px */;
+    width: calc(4 / 5 * 100%);
+    color: var(--color-stone-300) /* oklch(86.9% 0.005 56.366) = #d6d3d1 */;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: var(--color-borough-blue);
+  }
+
+  h2 {
+    font-size: 2.7rem;
+    color: var(--color-borough-blue);
+  }
+
+  h3 {
+    font-size: 2.2rem;
+    color: var(--color-borough-blue);
+  }
+
+  h4 {
+    font-size: 1.9rem;
+    color: var(--color-borough-blue);
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    color: var(--color-borough-blue);
+  }
+
+  h6 {
+    font-size: 1.3rem;
+    color: var(--color-borough-blue);
+  }
+}
+
+@layer utilities {
+  .small-caps {
+    font-variant: small-caps;
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

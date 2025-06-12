@@ -3,8 +3,8 @@ const msalStore = useMsalStore();
 </script>
 
 <template>
-  <div>
-    <div>
+  <div class="m-2">
+    <div class="flex gap-1">
       <button @click="msalStore.signIn('popup')">Login</button>
       <button @click="msalStore.signOut('popup')">Log Out</button>
     </div>
