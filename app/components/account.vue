@@ -15,7 +15,7 @@ const providerLogos: Record<string, string> = {
 </script>
 
 <template>
-  <div class="w-fit p-1 m-1 bg-amber-300">
+  <div class="w-fit p-4 m-2 bg-amber-300 rounded-2xl shadow drop-shadow-lg">
     <div v-if="account === msalStore.getActiveAccount" class="font-bold">
       Active Account
     </div>
