@@ -28,7 +28,8 @@ const providerLogos: Record<string, string> = {
         :src="providerLogos[provider]"
         class="w-10 h-10 m-2"
       />
-      <div v-if="provider === 'google.com'">
+      <!-- Do they all have these claims? -->
+      <div v-if="provider === 'google.com' || provider === 'facebook.com'">
         <div>
           {{ account.token?.idTokenClaims.email }}
         </div>
